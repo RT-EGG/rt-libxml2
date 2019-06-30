@@ -31,7 +31,8 @@ class XmlDocument
 {
 public:
 	XmlDocument(void)
-		: elements()
+		: version("1.0")
+		, elements()
 	{
 		return;
 	}
@@ -40,6 +41,17 @@ public:
 	{
 		clearElements();
 		return;
+	}
+
+	void setVersion(const std::string& in)
+	{
+		version = in;
+		return;
+	}
+
+	const std::string& getVersion(void) const
+	{
+		return version;
 	}
 
 	XmlElement* addElement(const std::string& in_name)
@@ -63,5 +75,6 @@ public:
 	}
 
 private:
+	std::string version;
 	std::vector<XmlElement*> elements;
 };

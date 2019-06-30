@@ -37,6 +37,12 @@ public:
 		if (!reader)
 			throw new FileReadError(in_path);
 
+		const xmlChar* version = xmlTextReaderConstXmlVersion(reader);
+		if (version)
+			out_result.setVersion((const char*)version);
+		else
+			out_result.setVersion("1.0");
+
 		out_result.clearElements();
 		NodeAnalyzer analizer(out_result);
 
