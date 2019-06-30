@@ -29,13 +29,13 @@ THE SOFTWARE.
 class XmlDocumentWriter
 {
 public:
-	static bool writeToFile(const std::string& in_path, XmlDocument& in_document, const std::string& in_indent = "\t")
+	static bool writeToFile(const std::string& in_path, XmlDocument& in_document, const std::string& in_indent = "  ")
 	{
 		std::ofstream output(in_path, std::ios::out);
 		if (output.fail())
 			return false;
 
-		output << "<?xml version=\"" << in_document.getVersion() << "\"?>" << std::endl;
+		output << "<?xml version=\"" << in_document.getVersion() << "\" encoding=\"UTF-8\"?>" << std::endl;
 		for (int i = 0; i < in_document.getElements().size(); ++i)
 			writeElement(in_document.getElements().at(i), output, in_indent);
 
